@@ -1,0 +1,183 @@
+/* Reset
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Variabili colore
+   ========================================================================== */
+
+:root {
+    --color-bg: #0d0d0f;
+    --color-surface: #18181b;
+    --color-surface-alt: #212124;
+    --color-border: #2c2c31;
+    --color-border-light: #3d3d44;
+    --color-text: #c9c9ce;
+    --color-text-strong: #f5f5f0;
+    --color-primary: #cba135;
+    --color-primary-hover: #b8912e;
+    --color-on-primary: #16160f;
+    --color-danger: #e05c5c;
+    --color-danger-bg: #3a2323;
+}
+
+
+/* Base
+   ========================================================================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+
+/* Header
+   ========================================================================== */
+
+header {
+    background-color: var(--color-surface);
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+header h1 {
+    color: var(--color-text-strong);
+    font-size: 1.6rem;
+}
+
+
+/* Layout principale
+   ========================================================================== */
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+
+/* Card del form / risultato
+   ========================================================================== */
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+
+/* Messaggio di errore
+   ========================================================================== */
+
+.error {
+    padding: 12px;
+    margin-bottom: 1.2rem;
+    color: var(--color-danger);
+    background-color: var(--color-danger-bg);
+    border: 1px solid var(--color-danger);
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+
+/* Campi del form
+   ========================================================================== */
+
+.field {
+    margin-bottom: 1.2rem;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.field input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+    background-color: var(--color-surface-alt);
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.field-group {
+    margin-bottom: 1.2rem;
+}
+
+.field-group__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.checkbox,
+.radio {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+
+/* Pulsante di invio
+   ========================================================================== */
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--color-primary-hover);
+}
+
+
+/* Pagina risultato
+   ========================================================================== */
+
+.result {
+    text-align: center;
+}
+
+.result__password {
+    font-family: "Courier New", monospace;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    background-color: var(--color-surface-alt);
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+    padding: 16px;
+    word-break: break-all;
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.button-link:hover {
+    background-color: var(--color-primary-hover);
+}
