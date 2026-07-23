@@ -1,7 +1,13 @@
-<?php 
-include './function.php';
-$length = isset($_GET['pass-length']) ? (int) $_GET['pass-length'] : null; 
-$password = generatePassword($length);
+<?php
+require_once './function.php';
+
+$length = getLengthFromSource($_GET, 'pass-length');
+
+session_start();
+
+// Salvo la lunghezza in sessione perché voglio che result.php la recuperi
+// senza doverla ripassare in query string.
+$_SESSION['pass-length'] = $length;
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +22,15 @@ $password = generatePassword($length);
         <h1>Generatore di Password</h1>
     </header>
     <main>
-    <form action="" method="get">
+    <form action="./result.php" method="get">
 
     <label for="pass-length">Imposta lunghezza password</label>
     <input type="number" id="pass-length" name="pass-length" placeholder="indica la lunghezza desiderata..." min="3" max="30">
 
-    <button type="submit">Genera la tua password</button>
+    <button type="submit">
+        Genera la tua password
+    </button>
     </form>
-
-    <div>
-        <p><?php echo "La password generata è '{$password}'" ?></p>
-    </div>
-
     </main>
 </body>
 </html>
