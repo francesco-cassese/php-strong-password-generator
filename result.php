@@ -3,17 +3,21 @@ require_once './function.php';
 
 session_start();
 
-$length = getLengthFromSource($_SESSION, 'pass-length');
+// Leggo le scelte dell'utente salvate in sessione da index.php.
+$length     = getLengthFromSource($_SESSION, 'pass-length');
+$uppercase  = getBoolFromSource($_SESSION, 'uppercase');
+$lowercase  = getBoolFromSource($_SESSION, 'lowercase');
+$numbers    = getBoolFromSource($_SESSION, 'numbers');
+$symbols    = getBoolFromSource($_SESSION, 'symbols');
+$allowRepetition = $_SESSION['allow-repetition'] ?? true;
 
-// Reindirizzo a index.php se questa pagina viene raggiunta senza essere passati
-// dal form: senza una lunghezza in sessione non ho nulla da generare.
-// Aggiungo exit subito dopo header() perché senza non fermerei l'esecuzione dello script.
+// Se manca la lunghezza in sessione, torno al form: niente da generare.
 if($length === null){
     header('Location: ./index.php');
     exit;
 }
 
-$password = generatePassword($length);
+$password = generatePassword($length, $uppercase, $lowercase, $numbers, $symbols, $allowRepetition);
 
 ?>
 
