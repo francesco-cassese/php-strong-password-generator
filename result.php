@@ -3,15 +3,15 @@ require_once './function.php';
 
 session_start();
 
+$length = getLengthFromSource($_SESSION, 'pass-length');
+
 // Reindirizzo a index.php se questa pagina viene raggiunta senza essere passati
 // dal form: senza una lunghezza in sessione non ho nulla da generare.
 // Aggiungo exit subito dopo header() perché senza non fermerei l'esecuzione dello script.
-if(!isset($_SESSION['pass-length'])){
+if($length === null){
     header('Location: ./index.php');
     exit;
 }
-
-$length = getLengthFromSource($_SESSION, 'pass-length');
 
 $password = generatePassword($length);
 
