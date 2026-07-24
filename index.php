@@ -57,16 +57,16 @@ unset($_SESSION['error']);
         <form class="card" action="./index.php" method="get">
 
             <?php if ($error): ?>
-                <p class="error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
+                <p class="error" id="form-error" role="alert"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
             <?php endif; ?>
 
             <div class="field">
                 <label for="pass-length">Imposta lunghezza password</label>
-                <input type="number" id="pass-length" name="pass-length" placeholder="indica la lunghezza desiderata..." min="3" max="30">
+                <input type="number" id="pass-length" name="pass-length" placeholder="indica la lunghezza desiderata..." min="3" max="30" required <?php if ($error): ?>aria-invalid="true" aria-describedby="form-error"<?php endif; ?>>
             </div>
 
-            <div class="field-group">
-                <span class="field-group__label">Includi</span>
+            <fieldset class="field-group">
+                <legend class="field-group__label">Includi</legend>
 
                 <label class="checkbox">
                     <input type="checkbox" name="uppercase" id="uppercase">
@@ -87,10 +87,10 @@ unset($_SESSION['error']);
                     <input type="checkbox" name="symbols" id="symbols">
                     Simboli
                 </label>
-            </div>
+            </fieldset>
 
-            <div class="field-group">
-                <span class="field-group__label">Consenti ripetizioni di uno o più caratteri</span>
+            <fieldset class="field-group">
+                <legend class="field-group__label">Consenti ripetizioni di uno o più caratteri</legend>
 
                 <label class="radio">
                     <input type="radio" name="allow-repetition" id="allow-repetition-yes" value="yes" checked>
@@ -101,7 +101,7 @@ unset($_SESSION['error']);
                     <input type="radio" name="allow-repetition" id="allow-repetition-no" value="no">
                     No
                 </label>
-            </div>
+            </fieldset>
 
             <button type="submit">
                 Genera la tua password

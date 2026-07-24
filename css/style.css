@@ -22,8 +22,8 @@
     --color-primary: #cba135;
     --color-primary-hover: #b8912e;
     --color-on-primary: #16160f;
-    --color-danger: #e05c5c;
-    --color-danger-bg: #3a2323;
+    --color-danger: #ff8080;
+    --color-danger-bg: #2a1515;
 }
 
 
@@ -114,6 +114,7 @@ main {
 }
 
 .field-group {
+    border: none;
     margin-bottom: 1.2rem;
 }
 
