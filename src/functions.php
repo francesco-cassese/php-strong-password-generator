@@ -43,17 +43,18 @@ function generateWithRepetition(string $characters, int $length): string {
     return $password;
 }
 
-// Mescolo tutti i caratteri di $characters (Fisher-Yates con random_int) e ne prendo i primi $length.
+// Estraggo $length caratteri a caso da $characters, togliendoli dal pool via via: non si ripetono.
 function generateWithoutRepetition(string $characters, int $length): string {
     $pool = str_split($characters);
+    $password = '';
 
-    for ($i = count($pool) - 1; $i > 0; $i--) {
-        $j = random_int(0, $i);
-        [$pool[$i], $pool[$j]] = [$pool[$j], $pool[$i]];
+    for ($i = 0; $i < $length && count($pool) > 0; $i++) {
+        $randomIndex = random_int(0, count($pool) - 1);
+        $password .= $pool[$randomIndex];
+        array_splice($pool, $randomIndex, 1); // tolgo il carattere già usato
     }
 
-    // Se $length è maggiore del pool disponibile, restituisco tutto il pool.
-    return implode('', array_slice($pool, 0, $length));
+    return $password;
 }
 
 // Costruisco il set di caratteri, poi genero la password con o senza ripetizioni.
